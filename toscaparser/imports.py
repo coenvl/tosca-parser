@@ -76,11 +76,11 @@ class ImportsLoader(object):
             return
 
         for import_def in self.importslist:
-            if isinstance(import_def, dict):
+            if isinstance(import_def, dict) and self.FILE not in import_def:
                 for import_name, import_uri in import_def.items():
                     if import_name in imports_names:
                         msg = (_('Duplicate import name "%s" was found.') %
-                               import_name)
+                            import_name)
                         log.error(msg)
                         ExceptionCollector.appendException(
                             ValidationError(message=msg))
