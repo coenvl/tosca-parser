@@ -288,6 +288,8 @@ class CSAR(object):
                                        os.path.dirname(tpl_file),
                                        resource_file)):
             return
+        elif os.path.isfile(self.temp_dir + resource_file):
+            return
         elif self._validate_artifact_name(node_templates):
             return
         else:
